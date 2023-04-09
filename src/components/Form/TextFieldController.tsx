@@ -6,7 +6,7 @@ import {
 
 import { TextField, TextFieldProps } from './TextField';
 
-export type TextFieldControllerProps<TFieldValues extends FieldValues> = {
+type TextFieldControllerProps<TFieldValues extends FieldValues> = {
   registration: UseFormRegisterReturn<FieldPathByValue<TFieldValues, string>>;
   textField: TextFieldProps;
 };
