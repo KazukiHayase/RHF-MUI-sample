@@ -1,12 +1,14 @@
 import Box from '@mui/material/Box/Box';
 import Button from '@mui/material/Button/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { CheckboxGroupController } from './components/Form/CheckboxGroupController';
 import { SelectController } from './components/Form/SelectController';
 import { TextFieldController } from './components/Form/TextFieldController';
 
 type Form = {
   textField: string;
   select: number | '';
+  checkboxGroup: number[];
 };
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
     defaultValues: {
       textField: '',
       select: '',
+      checkboxGroup: [],
     },
   });
 
@@ -43,11 +46,22 @@ function App() {
           control,
         }}
         select={{
-          fieldWrapper: {
-            label: 'Select',
-            errorMessage: errors.select?.message,
-          },
+          fieldWrapper: { label: 'Select' },
           muiTextField: undefined,
+          options: [
+            { label: '選択肢1', value: 1 },
+            { label: '選択肢2', value: 2 },
+            { label: '選択肢3', value: 3 },
+          ],
+        }}
+      />
+      <CheckboxGroupController<Form>
+        controller={{
+          name: 'checkboxGroup',
+          control,
+        }}
+        checkboxGroup={{
+          fieldWrapper: { label: 'CheckboxGroup' },
           options: [
             { label: '選択肢1', value: 1 },
             { label: '選択肢2', value: 2 },
