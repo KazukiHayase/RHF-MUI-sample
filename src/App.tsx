@@ -2,13 +2,16 @@ import Box from '@mui/material/Box/Box';
 import Button from '@mui/material/Button/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { CheckboxGroupController } from './components/Form/CheckboxGroupController';
+import { MultiComboBoxController } from './components/Form/MultiComboBoxController';
 import { SelectController } from './components/Form/SelectController';
 import { TextFieldController } from './components/Form/TextFieldController';
+import { Options } from './components/Form/types';
 
 type Form = {
   textField: string;
   select: number | '';
   checkboxGroup: number[];
+  multiComboBox: Options<string>;
 };
 
 function App() {
@@ -22,6 +25,7 @@ function App() {
       textField: '',
       select: '',
       checkboxGroup: [],
+      multiComboBox: [],
     },
   });
 
@@ -66,6 +70,20 @@ function App() {
             { label: '選択肢1', value: 1 },
             { label: '選択肢2', value: 2 },
             { label: '選択肢3', value: 3 },
+          ],
+        }}
+      />
+      <MultiComboBoxController<Form, string>
+        controller={{
+          name: 'multiComboBox',
+          control,
+        }}
+        multiComboBox={{
+          fieldWrapper: { label: 'MultiComboBox' },
+          options: [
+            { label: '選択肢1', value: '1' },
+            { label: '選択肢2', value: '2' },
+            { label: '選択肢3', value: '3' },
           ],
         }}
       />
